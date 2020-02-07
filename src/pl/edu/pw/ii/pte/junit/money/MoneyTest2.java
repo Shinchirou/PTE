@@ -1,6 +1,5 @@
 package pl.edu.pw.ii.pte.junit.money;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

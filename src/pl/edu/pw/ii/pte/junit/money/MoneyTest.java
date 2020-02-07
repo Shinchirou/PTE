@@ -1,10 +1,10 @@
 package pl.edu.pw.ii.pte.junit.money;
 
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 public class MoneyTest {
 
