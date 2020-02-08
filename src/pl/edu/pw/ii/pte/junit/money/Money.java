@@ -11,16 +11,9 @@ class Money {
     public Money(int amount, String currency) {
         fAmount = amount;
         fCurrency = currency;
-        initCurrencyExchangeRates();
     }
 
 
-    private void initCurrencyExchangeRates() {
-        currencyExchangeRates.put("PLN", 1);
-        currencyExchangeRates.put("EUR", 4);
-        currencyExchangeRates.put("DKK", 3);
-        currencyExchangeRates.put("GBP", 6);
-    }
 
     public int getAmount() {
         return fAmount;
@@ -38,7 +31,7 @@ class Money {
         if (getCurrency().equals(money.getCurrency())) {
             return new Money(getAmount() + money.getAmount(), getCurrency());
         } else {
-            return new Money((getAmount() * currencyExchangeRates.get(getCurrency()) + money.getAmount() * currencyExchangeRates.get(money.getCurrency())), "PLN")
+            return new Money((getAmount() * currencyExchangeRates.get(getCurrency()) + money.getAmount() * currencyExchangeRates.get(money.getCurrency())), getCurrency());
         }
     }
 
