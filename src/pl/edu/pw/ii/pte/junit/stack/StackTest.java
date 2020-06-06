@@ -120,4 +120,34 @@ public class StackTest {
         assertEquals(0, s.getSize());
     }
 
+    @Test
+    public void increasemaxcapa() {
+        Stack s = new Stack();
+        s.push(2);
+        s.push(3);
+        s.increaseMaxCapacity(20);
+
+        for (int i = 0; i < 12; i++){
+            s.push(i);
+        }
+
+        assertTrue(s.getSize() == 14);
+
+    }
+
+    @Test
+    public void increasemaxcapawithsmallervalue() {
+        Stack s = new Stack();
+        s.push(2);
+        s.push(3);
+        s.increaseMaxCapacity(8);
+
+        for (int i = 0; i < 5; i++){
+            s.push(i);
+        }
+
+        assertTrue(s.getSize() == 7);
+
+    }
+
 }

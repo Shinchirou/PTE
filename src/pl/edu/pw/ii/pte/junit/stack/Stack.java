@@ -15,6 +15,25 @@ public class Stack {
         return size == 0;
     }
 
+    public void increaseMaxCapacity(int i){
+        int[] tmpContents = new int[i];
+
+        if(i < maxCapacity){
+            maxCapacity = i;
+        }
+
+        for (int j = 0; 0 < i; j++){
+            if(j == maxCapacity-1 ){
+                break;
+            }
+            tmpContents[j] = contents[j];
+        }
+
+        maxCapacity = i;
+        contents = tmpContents;
+
+    }
+
     public void push(int i) {
         if (size == maxCapacity) {
             throw new BufferOverflowException();

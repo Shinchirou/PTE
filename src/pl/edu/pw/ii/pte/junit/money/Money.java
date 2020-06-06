@@ -4,18 +4,25 @@ import java.util.HashMap;
 import java.util.Map;
 
 class Money {
-    private int fAmount;
+    private double fAmount;
     private String fCurrency;
     public static Map<String, Integer> currencyExchangeRates = new HashMap<>();
 
-    public Money(int amount, String currency) {
+    public Money(double amount, String currency) {
         fAmount = amount;
         fCurrency = currency;
+        initCurrencyExchangeRates();
+    }
+
+    private void initCurrencyExchangeRates() {
+        currencyExchangeRates.put("PLN", 1);
+        currencyExchangeRates.put("EUR", 4);
+        currencyExchangeRates.put("DKK", 3);
+        currencyExchangeRates.put("GBP", 6);
     }
 
 
-
-    public int getAmount() {
+    public double getAmount() {
         return fAmount;
     }
 
@@ -31,7 +38,7 @@ class Money {
         if (getCurrency().equals(money.getCurrency())) {
             return new Money(getAmount() + money.getAmount(), getCurrency());
         } else {
-            return new Money((getAmount() * currencyExchangeRates.get(getCurrency()) + money.getAmount() * currencyExchangeRates.get(money.getCurrency())), getCurrency());
+            return new Money(((getAmount() * currencyExchangeRates.get(getCurrency()) + money.getAmount() * currencyExchangeRates.get(money.getCurrency()))/currencyExchangeRates.get(getCurrency())), getCurrency());
         }
     }
 
@@ -47,6 +54,14 @@ class Money {
         }
         return false;
 
+    }
+
+    public double checkValueForDifferentCurrency() {
+        return currencyExchangeRates.get(getCurrency()) * getAmount();
+    }
+
+    public static int getExchangeRateForCurrency(String fCurrency){
+        return Money.currencyExchangeRates.get(fCurrency);
     }
 
 }
